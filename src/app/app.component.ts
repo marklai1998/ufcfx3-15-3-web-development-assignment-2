@@ -9,9 +9,11 @@ import {
   MatOption,
   MatSelect,
 } from '@angular/material/select'
-import { Atm, listAtm } from './services/listAtm'
+import { listAtm } from './services/listAtm'
 import { FormsModule } from '@angular/forms'
 import { MatInput } from '@angular/material/input'
+import { MarkerComponent } from './marker/marker.component'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-root',
@@ -25,6 +27,8 @@ import { MatInput } from '@angular/material/input'
     MatOption,
     MatLabel,
     MatInput,
+    MarkerComponent,
+    CommonModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -44,7 +48,19 @@ export class AppComponent implements OnInit {
   // API result
   banks: Bank[] = []
   districts: District[] = []
-  atms: Atm[] = []
+  atms: {
+    item_id: string
+    position: {
+      lat: number
+      lng: number
+    }
+    detail: {
+      type: string
+      bankName: string
+      serviceHour: string
+      address: string
+    }
+  }[] = []
 
   // Filters
   selectedLanguage = 'en'
@@ -69,7 +85,26 @@ export class AppComponent implements OnInit {
       language: this.selectedLanguage,
     })
 
-    this.atms = latest_record
+    this.atms = latest_record.map(
+      ({
+        item_id,
+        latitude,
+        longitude,
+        type_of_machine,
+        bank_name,
+        service_hours,
+        address,
+      }) => ({
+        item_id,
+        position: { lat: Number(latitude), lng: Number(longitude) },
+        detail: {
+          type: type_of_machine,
+          bankName: bank_name,
+          serviceHour: service_hours,
+          address: address,
+        },
+      })
+    )
   }
 
   ngOnInit() {

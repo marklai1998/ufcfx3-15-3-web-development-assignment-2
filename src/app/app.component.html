@@ -1,5 +1,4 @@
-<style>
-</style>
+<style></style>
 
 <main class="main">
   <div class="toolbar">
@@ -7,7 +6,7 @@
       <mat-label>District</mat-label>
       <mat-select [(ngModel)]="selectedDistrict" (ngModelChange)="searchATM()">
         @for (district of districts; track district) {
-          <mat-option [value]="district">{{district}}</mat-option>
+          <mat-option [value]="district">{{ district }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
@@ -15,16 +14,26 @@
       <mat-label>Bank</mat-label>
       <mat-select [(ngModel)]="selectedBank" (ngModelChange)="searchATM()">
         @for (bank of banks; track bank) {
-          <mat-option [value]="bank">{{bank}}</mat-option>
+          <mat-option [value]="bank">{{ bank }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Address</mat-label>
-      <input matInput [(ngModel)]="searchAddress" (ngModelChange)="searchATM()">
+      <input
+        matInput
+        [(ngModel)]="searchAddress"
+        (ngModelChange)="searchATM()"
+      />
     </mat-form-field>
   </div>
-  <google-map [options]="options" [width]="width" [height]="height" />
+  <google-map [options]="options" [width]="width" [height]="height">
+    <ng-container *ngFor="let atm of atms">
+      @for (atm of atms; track atm.item_id) {
+        <app-marker [position]="atm.position" [atm]="atm.detail" />
+      }
+    </ng-container>
+  </google-map>
 </main>
 
 <router-outlet />
