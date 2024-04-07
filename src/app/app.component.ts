@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core'
+import { RouterOutlet } from '@angular/router'
 import { GoogleMap } from '@angular/google-maps'
 
 @Component({
@@ -7,14 +7,11 @@ import { GoogleMap } from '@angular/google-maps'
   standalone: true,
   imports: [RouterOutlet, GoogleMap],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'atm-today-web-angular';
-
   options: google.maps.MapOptions = {
-    center: {lat: 40, lng: -20},
-    zoom: 4
-  };
-
+    center: { lat: 22.3316025, lng: 114.12776 },
+    zoom: 4,
+  }
 }
