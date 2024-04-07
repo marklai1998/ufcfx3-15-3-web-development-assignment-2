@@ -7,9 +7,7 @@ export const updateAtm = (language: string, details: Atm) => {
 
     xhr.open(
       'PUT',
-      `${
-        import.meta.env.VITE_API_BASE
-      }/AWTD/api/v1/UpdateItemById.php${formatParams({
+      `${env.API_BASE_URL}/AWTD/api/v1/UpdateItemById.php${formatParams({
         lan: language,
       })}`
     )

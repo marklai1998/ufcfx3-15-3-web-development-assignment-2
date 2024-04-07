@@ -1,5 +1,6 @@
 import { formatParams } from '../utils/formatParams'
 import { Atm } from './listAtm'
+import { env } from '../../env'
 
 export const createAtm = (language: string, details: Omit<Atm, 'item_id'>) => {
   return new Promise<void>((resolve, reject) => {
@@ -7,9 +8,7 @@ export const createAtm = (language: string, details: Omit<Atm, 'item_id'>) => {
 
     xhr.open(
       'PUT',
-      `${
-        import.meta.env.VITE_API_BASE
-      }/AWTD/api/v1/CreateNewRecord.php${formatParams({
+      `${env.API_BASE_URL}/AWTD/api/v1/CreateNewRecord.php${formatParams({
         lan: language,
       })}`
     )

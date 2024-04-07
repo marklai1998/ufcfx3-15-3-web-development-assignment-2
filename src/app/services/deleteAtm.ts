@@ -1,4 +1,5 @@
 import { formatParams } from '../utils/formatParams'
+import { env } from '../../env'
 
 export const deleteAtm = ({ id }: { id: string }) => {
   return new Promise<void>((resolve, reject) => {
@@ -6,9 +7,7 @@ export const deleteAtm = ({ id }: { id: string }) => {
 
     xhr.open(
       'DELETE',
-      `${
-        import.meta.env.VITE_API_BASE
-      }/AWTD/api/v1/RemoveItemById.php${formatParams({
+      `${env.API_BASE_URL}/AWTD/api/v1/RemoveItemById.php${formatParams({
         item_id: id,
       })}`
     )

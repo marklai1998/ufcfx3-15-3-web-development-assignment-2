@@ -1,4 +1,5 @@
 import { formatParams } from '../utils/formatParams'
+import { env } from '../../env'
 
 export type Bank = string
 
@@ -9,16 +10,16 @@ type ListBankResponse = {
 }
 
 export const listBank = ({ language }: { language: string }) => {
-  // return {
-  //   success: true,
-  //   message: 'Data received.',
-  //   banks: [
-  //     'The Bank of East Asia Limited',
-  //     'Shanghai Commercial Bank Limited',
-  //     'Public Bank (Hong Kong) Limited',
-  //     'OCBC Bank (Hong Kong) Limited',
-  //   ],
-  // }
+  return {
+    success: true,
+    message: 'Data received.',
+    banks: [
+      'The Bank of East Asia Limited',
+      'Shanghai Commercial Bank Limited',
+      'Public Bank (Hong Kong) Limited',
+      'OCBC Bank (Hong Kong) Limited',
+    ],
+  }
 
   return new Promise<ListBankResponse>((resolve, reject) => {
     let xhr = new XMLHttpRequest()
@@ -26,7 +27,7 @@ export const listBank = ({ language }: { language: string }) => {
     xhr.open(
       'GET',
       `${
-        import.meta.env.VITE_API_BASE
+        env.API_BASE_URL
       }/AWTD/api/v1/GetBankLists.php${formatParams({ lan: language })}`
     )
     xhr.responseType = 'json'
