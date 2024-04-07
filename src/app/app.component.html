@@ -1,7 +1,7 @@
 <style></style>
 
 <main class="main">
-  <div class="toolbar">
+  <div class="search-toolbar">
     <mat-form-field>
       <mat-label>District</mat-label>
       <mat-select [(ngModel)]="selectedDistrict" (ngModelChange)="searchATM()">
@@ -26,6 +26,17 @@
         (ngModelChange)="searchATM()"
       />
     </mat-form-field>
+  </div>
+  <div class="actions">
+    <mat-button-toggle-group
+      hideSingleSelectionIndicator
+      [(ngModel)]="selectedLanguage"
+      (ngModelChange)="searchATM()"
+    >
+      <mat-button-toggle value="en">En</mat-button-toggle>
+      <mat-button-toggle value="sc">Sc</mat-button-toggle>
+      <mat-button-toggle value="tc">Tc</mat-button-toggle>
+    </mat-button-toggle-group>
   </div>
   <google-map [options]="options" [width]="width" [height]="height">
     <ng-container *ngFor="let atm of atms">

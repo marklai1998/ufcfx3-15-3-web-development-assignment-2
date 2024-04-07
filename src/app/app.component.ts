@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms'
 import { MatInput } from '@angular/material/input'
 import { MarkerComponent } from './marker/marker.component'
 import { CommonModule } from '@angular/common'
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,7 @@ import { CommonModule } from '@angular/common'
     MatInput,
     MarkerComponent,
     CommonModule,
+    MatButtonToggleModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
