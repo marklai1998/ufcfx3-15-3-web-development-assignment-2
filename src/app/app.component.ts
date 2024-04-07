@@ -12,6 +12,11 @@ import { GoogleMap } from '@angular/google-maps'
 export class AppComponent {
   options: google.maps.MapOptions = {
     center: { lat: 22.3316025, lng: 114.12776 },
-    zoom: 4,
+    zoom: 12,
+    clickableIcons: false,
+    disableDefaultUI: true,
   }
+
+  width = '100vw'
+  height = '100vh'
 }
