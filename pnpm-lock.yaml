@@ -20,6 +20,9 @@ dependencies:
   '@angular/forms':
     specifier: 17.3.3
     version: 17.3.3(@angular/common@17.3.3)(@angular/core@17.3.3)(@angular/platform-browser@17.3.3)(rxjs@7.8.1)
+  '@angular/google-maps':
+    specifier: 17.3.3
+    version: 17.3.3(@angular/common@17.3.3)(@angular/core@17.3.3)(rxjs@7.8.1)
   '@angular/platform-browser':
     specifier: 17.3.3
     version: 17.3.3(@angular/animations@17.3.3)(@angular/common@17.3.3)(@angular/core@17.3.3)
@@ -379,6 +382,20 @@ packages:
       '@angular/common': 17.3.3(@angular/core@17.3.3)(rxjs@7.8.1)
       '@angular/core': 17.3.3(rxjs@7.8.1)(zone.js@0.14.4)
       '@angular/platform-browser': 17.3.3(@angular/animations@17.3.3)(@angular/common@17.3.3)(@angular/core@17.3.3)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: false
+
+  /@angular/google-maps@17.3.3(@angular/common@17.3.3)(@angular/core@17.3.3)(rxjs@7.8.1):
+    resolution: {integrity: sha512-1EN162gKOT8O1ikIk814xf7HfjnV8Xh5gqq1QfaTfZ4qPa80aujpWwr6LZgyTXVa4evbZV6e5QjSGNiGvyUh+g==}
+    peerDependencies:
+      '@angular/common': ^17.0.0 || ^18.0.0
+      '@angular/core': ^17.0.0 || ^18.0.0
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/common': 17.3.3(@angular/core@17.3.3)(rxjs@7.8.1)
+      '@angular/core': 17.3.3(rxjs@7.8.1)(zone.js@0.14.4)
+      '@types/google.maps': 3.55.7
       rxjs: 7.8.1
       tslib: 2.6.2
     dev: false
@@ -2612,6 +2629,10 @@ packages:
       '@types/qs': 6.9.14
       '@types/serve-static': 1.15.7
     dev: true
+
+  /@types/google.maps@3.55.7:
+    resolution: {integrity: sha512-SlWFx0vo7RSAOC63+PTz8FeqLDaRYs7PrS/L0bZSKswxIN5TnCuckbeIwZpgD/S+DWalPteXfDbg5JsUER5Cyw==}
+    dev: false
 
   /@types/http-errors@2.0.4:
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
@@ -4983,6 +5004,8 @@ packages:
       webpack: '*'
     peerDependenciesMeta:
       webpack:
+        optional: true
+      webpack-sources:
         optional: true
     dependencies:
       webpack: 5.90.3(esbuild@0.20.1)
