@@ -1,0 +1,51 @@
+<main class="main">
+  <div class="search-toolbar">
+    <mat-form-field>
+      <mat-label>District</mat-label>
+      <mat-select [(ngModel)]="selectedDistrict" (ngModelChange)="searchATM()">
+        @for (district of districts; track district) {
+          <mat-option [value]="district">{{ district }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Bank</mat-label>
+      <mat-select [(ngModel)]="selectedBank" (ngModelChange)="searchATM()">
+        @for (bank of banks; track bank) {
+          <mat-option [value]="bank">{{ bank }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input
+        matInput
+        [(ngModel)]="searchAddress"
+        (ngModelChange)="searchATM()"
+      />
+    </mat-form-field>
+  </div>
+  <div class="actions">
+    <mat-button-toggle-group
+      hideSingleSelectionIndicator
+      [(ngModel)]="selectedLanguage"
+      (ngModelChange)="searchATM()"
+    >
+      <mat-button-toggle value="en">En</mat-button-toggle>
+      <mat-button-toggle value="sc">Sc</mat-button-toggle>
+      <mat-button-toggle value="tc">Tc</mat-button-toggle>
+    </mat-button-toggle-group>
+    <a routerLink="admin">
+      <button mat-raised-button class="setting-btn">
+        <i class="material-icons">edit</i>
+      </button>
+    </a>
+  </div>
+  <google-map [options]="options" [width]="width" [height]="height">
+    <ng-container *ngFor="let atm of atms">
+      @for (atm of atms; track atm.item_id) {
+        <app-marker [position]="atm.position" [atm]="atm.detail" />
+      }
+    </ng-container>
+  </google-map>
+</main>

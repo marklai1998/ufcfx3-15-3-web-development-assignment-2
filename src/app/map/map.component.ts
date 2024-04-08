@@ -1,26 +1,25 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { RouterLink, RouterOutlet } from '@angular/router'
 import { GoogleMap } from '@angular/google-maps'
-import { District, listDistrict } from './services/listDistrict'
-import { Bank, listBank } from './services/listBank'
+import { FormsModule } from '@angular/forms'
 import {
   MatFormField,
   MatLabel,
   MatOption,
   MatSelect,
 } from '@angular/material/select'
-import { listAtm } from './services/listAtm'
-import { FormsModule } from '@angular/forms'
 import { MatInput } from '@angular/material/input'
-import { MarkerComponent } from './marker/marker.component'
+import { MarkerComponent } from '../marker/marker.component'
 import { CommonModule } from '@angular/common'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
-import { MatIcon } from '@angular/material/icon'
-import { MatButton, MatMiniFabButton } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
+import { MatButton, MatMiniFabButton } from '@angular/material/button'
+import { listAtm } from '../services/listAtm'
+import { Bank, listBank } from '../services/listBank'
+import { District, listDistrict } from '../services/listDistrict'
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-map',
   standalone: true,
   imports: [
     RouterOutlet,
@@ -39,10 +38,10 @@ import { MatIconModule } from '@angular/material/icon'
     MatButton,
     RouterLink,
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  templateUrl: './map.component.html',
+  styleUrl: './map.component.css',
 })
-export class AppComponent implements OnInit {
+export class MapComponent {
   // Google map options
   options: google.maps.MapOptions = {
     center: { lat: 22.3316025, lng: 114.12776 },

@@ -38,6 +38,9 @@ dependencies:
   '@angular/router':
     specifier: 17.3.3
     version: 17.3.3(@angular/common@17.3.3)(@angular/core@17.3.3)(@angular/platform-browser@17.3.3)(rxjs@7.8.1)
+  material-design-icons-iconfont:
+    specifier: ^6.7.0
+    version: 6.7.0
   rxjs:
     specifier: 7.8.1
     version: 7.8.1
@@ -5878,6 +5881,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /material-design-icons-iconfont@6.7.0:
+    resolution: {integrity: sha512-lSj71DgVv20kO0kGbs42icDzbRot61gEDBLQACzkUuznRQBUYmbxzEkGU6dNBb5fRWHMaScYlAXX96HQ4/cJWA==}
+    dev: false
 
   /media-typer@0.3.0:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}

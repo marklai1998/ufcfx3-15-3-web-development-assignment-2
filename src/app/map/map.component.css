@@ -1,0 +1,21 @@
+.search-toolbar {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+}
+
+.actions {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+}
+
+.setting-btn {
+  height: 50px;
+}
