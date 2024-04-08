@@ -1,10 +1,14 @@
-<mat-drawer-container class="drawer">
+<mat-drawer-container class="drawer-container">
   <mat-drawer
     [opened]="createDrawerOpened"
     (closed)="onCreateDrawerClosed()"
     position="end"
+    class="drawer"
   >
-    I'm a drawer
+    <mat-toolbar>Create Atm</mat-toolbar>
+    <div class="drawer-content">
+      <app-create-form [language]="selectedLanguage" />
+    </div>
   </mat-drawer>
   <mat-toolbar>
     <a routerLink="">

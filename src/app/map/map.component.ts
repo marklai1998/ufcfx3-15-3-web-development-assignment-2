@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { RouterLink, RouterOutlet } from '@angular/router'
 import { GoogleMap } from '@angular/google-maps'
 import { FormsModule } from '@angular/forms'
@@ -41,7 +41,7 @@ import { District, listDistrict } from '../services/listDistrict'
   templateUrl: './map.component.html',
   styleUrl: './map.component.css',
 })
-export class MapComponent {
+export class MapComponent implements OnInit {
   // Google map options
   options: google.maps.MapOptions = {
     center: { lat: 22.3316025, lng: 114.12776 },

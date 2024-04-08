@@ -1,0 +1,52 @@
+<div>
+  <mat-form-field>
+    <mat-label>Lat</mat-label>
+    <input matInput type="number" />
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <mat-label>Long</mat-label>
+    <input matInput type="number" />
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <mat-label>District</mat-label>
+    <mat-select>
+      @for (district of districts; track district) {
+        <mat-option [value]="district">{{ district }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <mat-label>Bank</mat-label>
+    <mat-select>
+      @for (bank of banks; track bank) {
+        <mat-option [value]="bank">{{ bank }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <input matInput />
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <mat-label>Address</mat-label>
+    <input matInput />
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <mat-label>Service hours</mat-label>
+    <input matInput />
+  </mat-form-field>
+</div>
+
+<button mat-button>Submit</button>

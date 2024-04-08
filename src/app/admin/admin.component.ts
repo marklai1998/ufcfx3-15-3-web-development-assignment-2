@@ -10,8 +10,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { FormsModule } from '@angular/forms'
 import { MatTableModule } from '@angular/material/table'
 import { deleteAtm } from '../services/deleteAtm'
-import { CreateDrawerComponent } from '../create-drawer/create-drawer.component'
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav'
+import { CreateFormComponent } from '../create-form/create-form.component'
 
 @Component({
   selector: 'app-admin',
@@ -24,9 +24,9 @@ import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav'
     MatButtonToggleModule,
     FormsModule,
     MatTableModule,
-    CreateDrawerComponent,
     MatDrawer,
     MatDrawerContainer,
+    CreateFormComponent,
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
