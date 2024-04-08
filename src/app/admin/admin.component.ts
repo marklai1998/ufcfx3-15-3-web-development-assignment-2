@@ -9,6 +9,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
 
 import { FormsModule } from '@angular/forms'
 import { MatTableModule } from '@angular/material/table'
+import { deleteAtm } from '../services/deleteAtm'
 
 @Component({
   selector: 'app-admin',
@@ -36,6 +37,7 @@ export class AdminComponent implements OnInit {
     'type',
     'address',
     'serviceHours',
+    'actions',
   ]
 
   selectedLanguage = 'en'
@@ -45,6 +47,11 @@ export class AdminComponent implements OnInit {
       language: this.selectedLanguage,
     })
     this.atms = latest_record
+  }
+
+  async delete(id: string) {
+    await deleteAtm({ id })
+    await this.list()
   }
 
   ngOnInit() {
