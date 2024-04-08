@@ -39,7 +39,7 @@ dependencies:
     specifier: 17.3.3
     version: 17.3.3(@angular/common@17.3.3)(@angular/core@17.3.3)(@angular/platform-browser@17.3.3)(rxjs@7.8.1)
   material-design-icons-iconfont:
-    specifier: ^6.7.0
+    specifier: 6.7.0
     version: 6.7.0
   rxjs:
     specifier: 7.8.1
@@ -5747,8 +5747,6 @@ packages:
       webpack: '*'
     peerDependenciesMeta:
       webpack:
-        optional: true
-      webpack-sources:
         optional: true
     dependencies:
       webpack: 5.90.3(esbuild@0.20.1)
