@@ -10,20 +10,20 @@ type ListDistrictsResponse = {
 }
 
 export const listDistrict = ({ language }: { language: string }) => {
-  return {
-    success: true,
-    message: 'Data received.',
-    districts: [
-      'YuenLong',
-      'Yuen Long',
-      'Yuen Long District',
-      'YauTsimMong',
-      'Yau Tsui Mong',
-      'Yau Tsim Mong',
-      'Southern District',
-      'Southern',
-    ],
-  }
+  // return {
+  //   success: true,
+  //   message: 'Data received.',
+  //   districts: [
+  //     'YuenLong',
+  //     'Yuen Long',
+  //     'Yuen Long District',
+  //     'YauTsimMong',
+  //     'Yau Tsui Mong',
+  //     'Yau Tsim Mong',
+  //     'Southern District',
+  //     'Southern',
+  //   ],
+  // }
 
   return new Promise<ListDistrictsResponse>((resolve, reject) => {
     let xhr = new XMLHttpRequest()

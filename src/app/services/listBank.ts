@@ -10,18 +10,18 @@ type ListBankResponse = {
 }
 
 export const listBank = ({ language }: { language: string }) => {
-  return {
-    success: true,
-    message: 'Data received.',
-    banks: [
-      'The Bank of East Asia Limited',
-      'Shanghai Commercial Bank Limited',
-      'Public Bank (Hong Kong) Limited',
-      'OCBC Bank (Hong Kong) Limited',
-      'The Bank of East Asia Limited',
-      'The Hongkong and Shanghai Banking Corporation Limited',
-    ],
-  }
+  // return {
+  //   success: true,
+  //   message: 'Data received.',
+  //   banks: [
+  //     'The Bank of East Asia Limited',
+  //     'Shanghai Commercial Bank Limited',
+  //     'Public Bank (Hong Kong) Limited',
+  //     'OCBC Bank (Hong Kong) Limited',
+  //     'The Bank of East Asia Limited',
+  //     'The Hongkong and Shanghai Banking Corporation Limited',
+  //   ],
+  // }
 
   return new Promise<ListBankResponse>((resolve, reject) => {
     let xhr = new XMLHttpRequest()
