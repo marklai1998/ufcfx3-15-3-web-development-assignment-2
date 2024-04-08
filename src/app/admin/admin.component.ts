@@ -11,7 +11,11 @@ import { FormsModule } from '@angular/forms'
 import { MatTableModule } from '@angular/material/table'
 import { deleteAtm } from '../services/deleteAtm'
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav'
-import { CreateFormComponent } from '../create-form/create-form.component'
+import {
+  CreateFormComponent,
+  CreateFormValue,
+} from '../create-form/create-form.component'
+import { createAtm } from '../services/createAtm'
 
 @Component({
   selector: 'app-admin',
@@ -70,5 +74,26 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     void this.list()
+  }
+
+  async handleCreate({
+    latitude,
+    longitude,
+    district,
+    bank,
+    type,
+    serviceHours,
+    address,
+  }: CreateFormValue) {
+    await createAtm(this.selectedLanguage, {
+      latitude: String(latitude),
+      longitude: String(longitude),
+      district,
+      bank_name: bank,
+      type_of_machine: type,
+      address,
+      service_hours: serviceHours,
+    })
+    this.createDrawerOpened = false
   }
 }

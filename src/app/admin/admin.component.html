@@ -7,7 +7,10 @@
   >
     <mat-toolbar>Create Atm</mat-toolbar>
     <div class="drawer-content">
-      <app-create-form [language]="selectedLanguage" />
+      <app-create-form
+        [language]="selectedLanguage"
+        (onSubmit)="handleCreate($event)"
+      />
     </div>
   </mat-drawer>
   <mat-toolbar>
