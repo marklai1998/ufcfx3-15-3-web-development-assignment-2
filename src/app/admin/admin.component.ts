@@ -10,6 +10,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { FormsModule } from '@angular/forms'
 import { MatTableModule } from '@angular/material/table'
 import { deleteAtm } from '../services/deleteAtm'
+import { CreateDrawerComponent } from '../create-drawer/create-drawer.component'
+import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav'
 
 @Component({
   selector: 'app-admin',
@@ -22,6 +24,9 @@ import { deleteAtm } from '../services/deleteAtm'
     MatButtonToggleModule,
     FormsModule,
     MatTableModule,
+    CreateDrawerComponent,
+    MatDrawer,
+    MatDrawerContainer,
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
@@ -41,6 +46,7 @@ export class AdminComponent implements OnInit {
   ]
 
   selectedLanguage = 'en'
+  createDrawerOpened = false
 
   async list() {
     const { latest_record } = await listAtm({
@@ -52,6 +58,14 @@ export class AdminComponent implements OnInit {
   async delete(id: string) {
     await deleteAtm({ id })
     await this.list()
+  }
+
+  openCreateDrawer() {
+    this.createDrawerOpened = true
+  }
+
+  onCreateDrawerClosed() {
+    this.createDrawerOpened = false
   }
 
   ngOnInit() {
