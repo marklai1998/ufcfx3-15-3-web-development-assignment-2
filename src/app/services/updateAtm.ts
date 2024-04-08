@@ -1,5 +1,6 @@
 import { formatParams } from '../utils/formatParams'
 import { Atm } from './listAtm'
+import { env } from '../../env'
 
 export const updateAtm = (language: string, details: Atm) => {
   return new Promise<void>((resolve, reject) => {

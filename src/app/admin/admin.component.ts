@@ -16,6 +16,8 @@ import {
   CreateFormValue,
 } from '../create-form/create-form.component'
 import { createAtm } from '../services/createAtm'
+import { updateAtm } from '../services/updateAtm'
+import { NgIf } from '@angular/common'
 
 @Component({
   selector: 'app-admin',
@@ -31,6 +33,7 @@ import { createAtm } from '../services/createAtm'
     MatDrawer,
     MatDrawerContainer,
     CreateFormComponent,
+    NgIf,
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
@@ -51,6 +54,8 @@ export class AdminComponent implements OnInit {
 
   selectedLanguage = 'en'
   createDrawerOpened = false
+  editDrawerOpened = false
+  editItem: Atm | null = null
 
   async list() {
     const { latest_record } = await listAtm({
@@ -68,8 +73,18 @@ export class AdminComponent implements OnInit {
     this.createDrawerOpened = true
   }
 
+  openEditDrawer(atm: Atm) {
+    this.editItem = atm
+    this.editDrawerOpened = true
+  }
+
   onCreateDrawerClosed() {
     this.createDrawerOpened = false
+  }
+
+  onEditDrawerClosed() {
+    this.editDrawerOpened = false
+    this.editItem = null
   }
 
   ngOnInit() {
@@ -95,5 +110,29 @@ export class AdminComponent implements OnInit {
       service_hours: serviceHours,
     })
     this.createDrawerOpened = false
+  }
+
+  async handleEdit({
+    latitude,
+    longitude,
+    district,
+    bank,
+    type,
+    serviceHours,
+    address,
+  }: CreateFormValue) {
+    if (this.editItem)
+      await updateAtm(this.selectedLanguage, {
+        item_id: this.editItem.item_id,
+        latitude: String(latitude),
+        longitude: String(longitude),
+        district,
+        bank_name: bank,
+        type_of_machine: type,
+        address,
+        service_hours: serviceHours,
+      })
+    this.createDrawerOpened = false
+    this.editItem = null
   }
 }

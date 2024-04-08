@@ -1,96 +1,122 @@
 <mat-drawer-container class="drawer-container">
   <mat-drawer
-    [opened]="createDrawerOpened"
-    (closed)="onCreateDrawerClosed()"
+    [opened]="editDrawerOpened"
+    (closed)="onEditDrawerClosed()"
     position="end"
     class="drawer"
   >
-    <mat-toolbar>Create Atm</mat-toolbar>
+    <mat-toolbar>Edit Atm</mat-toolbar>
     <div class="drawer-content">
       <app-create-form
+        [initialValue]="editItem"
         [language]="selectedLanguage"
-        (onSubmit)="handleCreate($event)"
+        (onSubmit)="handleEdit($event)"
+        *ngIf="editItem"
       />
     </div>
   </mat-drawer>
-  <mat-toolbar>
-    <a routerLink="">
-      <button
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with menu icon"
-      >
-        <mat-icon>chevron_left</mat-icon>
-      </button>
-    </a>
-    Admin
-    <div class="spacer"></div>
-    <mat-button-toggle-group
-      hideSingleSelectionIndicator
-      [(ngModel)]="selectedLanguage"
-      (ngModelChange)="list()"
+  <mat-drawer-container class="drawer-container">
+    <mat-drawer
+      [opened]="createDrawerOpened"
+      (closed)="onCreateDrawerClosed()"
+      position="end"
+      class="drawer"
     >
-      <mat-button-toggle value="en">En</mat-button-toggle>
-      <mat-button-toggle value="sc">Sc</mat-button-toggle>
-      <mat-button-toggle value="tc">Tc</mat-button-toggle>
-    </mat-button-toggle-group>
-  </mat-toolbar>
-  <div class="actions-wrapper">
-    <button mat-button (click)="openCreateDrawer()">
-      <mat-icon>add</mat-icon>Create
-    </button>
-  </div>
-  <table mat-table [dataSource]="atms">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>Id</th>
-      <td mat-cell *matCellDef="let element">{{ element.item_id }}</td>
-    </ng-container>
+      <mat-toolbar>Create Atm</mat-toolbar>
+      <div class="drawer-content">
+        <app-create-form
+          [language]="selectedLanguage"
+          (onSubmit)="handleCreate($event)"
+        />
+      </div>
+    </mat-drawer>
 
-    <ng-container matColumnDef="lat">
-      <th mat-header-cell *matHeaderCellDef>Lat</th>
-      <td mat-cell *matCellDef="let element">{{ element.latitude }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="long">
-      <th mat-header-cell *matHeaderCellDef>Long</th>
-      <td mat-cell *matCellDef="let element">{{ element.longitude }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="district">
-      <th mat-header-cell *matHeaderCellDef>District</th>
-      <td mat-cell *matCellDef="let element">{{ element.district }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="bankName">
-      <th mat-header-cell *matHeaderCellDef>Bank Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.bank_name }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>Type</th>
-      <td mat-cell *matCellDef="let element">{{ element.type_of_machine }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef>Address</th>
-      <td mat-cell *matCellDef="let element">{{ element.address }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="serviceHours">
-      <th mat-header-cell *matHeaderCellDef>Service Hours</th>
-      <td mat-cell *matCellDef="let element">{{ element.service_hours }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="delete(element.item_id)">
-          <mat-icon>delete</mat-icon>
+    <mat-toolbar>
+      <a routerLink="">
+        <button
+          mat-icon-button
+          class="example-icon"
+          aria-label="Example icon-button with menu icon"
+        >
+          <mat-icon>chevron_left</mat-icon>
         </button>
-      </td>
-    </ng-container>
+      </a>
+      Admin
+      <div class="spacer"></div>
+      <mat-button-toggle-group
+        hideSingleSelectionIndicator
+        [(ngModel)]="selectedLanguage"
+        (ngModelChange)="list()"
+      >
+        <mat-button-toggle value="en">En</mat-button-toggle>
+        <mat-button-toggle value="sc">Sc</mat-button-toggle>
+        <mat-button-toggle value="tc">Tc</mat-button-toggle>
+      </mat-button-toggle-group>
+    </mat-toolbar>
+    <div class="actions-wrapper">
+      <button mat-button (click)="openCreateDrawer()">
+        <mat-icon>add</mat-icon>Create
+      </button>
+    </div>
+    <table mat-table [dataSource]="atms">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.item_id }}</td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+      <ng-container matColumnDef="lat">
+        <th mat-header-cell *matHeaderCellDef>Lat</th>
+        <td mat-cell *matCellDef="let element">{{ element.latitude }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="long">
+        <th mat-header-cell *matHeaderCellDef>Long</th>
+        <td mat-cell *matCellDef="let element">{{ element.longitude }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="district">
+        <th mat-header-cell *matHeaderCellDef>District</th>
+        <td mat-cell *matCellDef="let element">{{ element.district }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="bankName">
+        <th mat-header-cell *matHeaderCellDef>Bank Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.bank_name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.type_of_machine }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="serviceHours">
+        <th mat-header-cell *matHeaderCellDef>Service Hours</th>
+        <td mat-cell *matCellDef="let element">{{ element.service_hours }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <div class="actions-wrapper">
+            <button mat-icon-button (click)="delete(element.item_id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button (click)="openEditDrawer(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-drawer-container>
 </mat-drawer-container>

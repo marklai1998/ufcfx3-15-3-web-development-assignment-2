@@ -13,6 +13,7 @@ import {
   Validators,
 } from '@angular/forms'
 import { NgIf } from '@angular/common'
+import { Atm } from '../services/listAtm'
 
 export type CreateFormValue = {
   latitude: number
@@ -41,17 +42,8 @@ export type CreateFormValue = {
 })
 export class CreateFormComponent implements OnInit {
   @Input() language!: string
+  @Input() initialValue?: Atm
   @Output() onSubmit: EventEmitter<any> = new EventEmitter()
-
-  atm: CreateFormValue = {
-    latitude: 0,
-    longitude: 0,
-    district: '',
-    bank: '',
-    type: '',
-    address: '',
-    serviceHours: '',
-  }
 
   createForm!: FormGroup
 
@@ -69,13 +61,28 @@ export class CreateFormComponent implements OnInit {
 
   ngOnInit() {
     this.createForm = new FormGroup({
-      latitude: new FormControl(this.atm.latitude, Validators.required),
-      longitude: new FormControl(this.atm.longitude, Validators.required),
-      district: new FormControl(this.atm.district, Validators.required),
-      bank: new FormControl(this.atm.bank, Validators.required),
-      type: new FormControl(this.atm.type, Validators.required),
-      address: new FormControl(this.atm.address, Validators.required),
-      serviceHours: new FormControl(this.atm.serviceHours, Validators.required),
+      latitude: new FormControl(
+        this.initialValue?.latitude,
+        Validators.required
+      ),
+      longitude: new FormControl(
+        this.initialValue?.longitude,
+        Validators.required
+      ),
+      district: new FormControl(
+        this.initialValue?.district,
+        Validators.required
+      ),
+      bank: new FormControl(this.initialValue?.bank_name, Validators.required),
+      type: new FormControl(
+        this.initialValue?.type_of_machine,
+        Validators.required
+      ),
+      address: new FormControl(this.initialValue?.address, Validators.required),
+      serviceHours: new FormControl(
+        this.initialValue?.service_hours,
+        Validators.required
+      ),
     })
 
     void this.loadSelections()

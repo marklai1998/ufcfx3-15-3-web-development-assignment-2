@@ -20,6 +20,8 @@ export const listDistrict = ({ language }: { language: string }) => {
       'YauTsimMong',
       'Yau Tsui Mong',
       'Yau Tsim Mong',
+      'Southern District',
+      'Southern',
     ],
   }
 

@@ -18,6 +18,8 @@ export const listBank = ({ language }: { language: string }) => {
       'Shanghai Commercial Bank Limited',
       'Public Bank (Hong Kong) Limited',
       'OCBC Bank (Hong Kong) Limited',
+      'The Bank of East Asia Limited',
+      'The Hongkong and Shanghai Banking Corporation Limited',
     ],
   }
 
