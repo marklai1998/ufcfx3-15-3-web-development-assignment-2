@@ -134,5 +134,6 @@ export class AdminComponent implements OnInit {
       })
     this.createDrawerOpened = false
     this.editItem = null
+    await this.list()
   }
 }
